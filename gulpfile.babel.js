@@ -1,28 +1,29 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var babel = require('gulp-babel');
-var browserSync = require('browser-sync').create();
+import gulp from 'gulp';
+import sass from 'gulp-sass';
+import babel from 'gulp-babel';
+import { create } from 'browser-sync';
+const browserSync = create();
 
-gulp.task('scss', function(){
+gulp.task('scss', () => {
 	gulp.src('src/scss/*.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(gulp.dest('build/css'))
 		.pipe(browserSync.stream());
 });
 
-gulp.task('js', function(){
+gulp.task('js', () => {
 	gulp.src('src/js/*.js')
 		.pipe(babel({presets: ['es2015']}))
 		.pipe(gulp.dest('build/js'))
 		.pipe(browserSync.stream());
 });
 
-gulp.task('default', function(){
+gulp.task('default', () => {
 	browserSync.init({
 		server: {
 			baseDir: './'
 		}
-	})
+	});
 
 	gulp.watch('src/scss/*.scss', ['scss']);
 	gulp.watch('src/js/*.js', ['js']);
