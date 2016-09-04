@@ -1,5 +1,5 @@
 var say = () => {
-	console.log('say');
+	console.log('hello world');
 }
 
 say();

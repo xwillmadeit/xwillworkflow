@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.js"],"names":["say","console","log"],"mappings":"AAAA,YAEA,IAAIA,KAAM,WACTC,QAAQC,IAAI,eAGbF","file":"main.js","sourcesContent":["'use strict';\n\nvar say = function say() {\n\tconsole.log('hello world');\n};\n\nsay();"],"sourceRoot":"/source/"}
