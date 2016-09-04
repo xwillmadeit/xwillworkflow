@@ -22,7 +22,8 @@ gulp.task('default', () => {
 	browserSync.init({
 		server: {
 			baseDir: './'
-		}
+		},
+		browser: "google chrome"
 	});
 
 	gulp.watch('src/scss/*.scss', ['scss']);
