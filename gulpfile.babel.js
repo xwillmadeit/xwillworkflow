@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import sass from 'gulp-sass';
 import babel from 'gulp-babel';
 import autoprefixer from 'gulp-autoprefixer';
-import minifycss from 'gulp-minify-css';
+import cleancss from 'gulp-clean-css';
 import uglify from 'gulp-uglify';
 import concat from 'gulp-concat';
 import sourcemaps from 'gulp-sourcemaps';
@@ -17,7 +17,7 @@ gulp.task('scss', () => {
 			browsers: 'last 4 versions'
 		}))
 		.pipe(concat('app.css'))
-		.pipe(minifycss())
+		.pipe(cleancss())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('build/css'))
 		.pipe(browserSync.stream());
@@ -26,6 +26,7 @@ gulp.task('scss', () => {
 gulp.task('js', () => {
 	gulp.src('src/js/*.js')
 		.pipe(babel({presets: ['es2015']}))
+		.on('error', (err) => { console.log(err.toString()) })
 		.pipe(sourcemaps.init())
 		.pipe(uglify())
 		.pipe(sourcemaps.write('.'))
